@@ -1,0 +1,311 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_RSS_IT-CONNECT",
+      "label": "RSS It-Connect",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "volkovlabs-rss-datasource",
+      "pluginName": "RSS/Atom"
+    },
+    {
+      "name": "DS_RSS_USINE DIGITAL-VIEILLEINFORMATIQUE",
+      "label": "RSS Usine Digital-VieilleInformatique",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "volkovlabs-rss-datasource",
+      "pluginName": "RSS/Atom"
+    },
+    {
+      "name": "DS_RSS_MEDIUM.COM/FEED/@VOLKOVLABS",
+      "label": "RSS medium.com/feed/@volkovlabs",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "volkovlabs-rss-datasource",
+      "pluginName": "RSS/Atom"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "10.4.0"
+    },
+    {
+      "type": "panel",
+      "id": "marcusolsson-dynamictext-panel",
+      "name": "Dynamic Text",
+      "version": "4.5.0"
+    },
+    {
+      "type": "datasource",
+      "id": "volkovlabs-rss-datasource",
+      "name": "RSS/Atom",
+      "version": "3.1.0"
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "volkovlabs-rss-datasource",
+        "uid": "${DS_RSS_IT-CONNECT}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 3,
+      "options": {
+        "afterRender": "",
+        "content": "<table width=\"100%\" style=\"border:0\">\n  <tr>\n    <td style=\"border:0\">\n      <h3><a target=\"_blank\" style=\"color: white;\" href=\"{{link}}\">{{title}}</a></h3>\n      <div>{{{description}}}</div>\n    </td>\n    <td rowspan=\"2\" style=\"border:0\" width=\"200px\">\n      {{#if image}}\n      <div style=\"max-width: 100%; display: inline; height: auto;\"><img width=\"200px\" src=\"{{image}}\"></div>\n      {{/if}}\n    </td>\n  </tr>\n  <tr>\n    <td style=\"border:0\">\n      <b>{{date}} by {{author}}</b>\n    </td>\n  </tr>\n</table>",
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "language": "handlebars"
+        },
+        "editors": [],
+        "externalScripts": [],
+        "externalStyles": [],
+        "helpers": "",
+        "renderMode": "everyRow",
+        "styles": "",
+        "wrap": false
+      },
+      "pluginVersion": "4.5.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "volkovlabs-rss-datasource",
+            "uid": "${DS_RSS_IT-CONNECT}"
+          },
+          "feedType": "items",
+          "refId": "A"
+        }
+      ],
+      "title": "Veille techno usine digitale",
+      "transformations": [
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "dateFormat": "ddd, DD MMM YYYY HH:mm:ss ZZ",
+                "destinationType": "time",
+                "targetField": "pubDate"
+              }
+            ],
+            "fields": {}
+          }
+        }
+      ],
+      "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
+        "type": "volkovlabs-rss-datasource",
+        "uid": "${DS_RSS_USINE DIGITAL-VIEILLEINFORMATIQUE}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "afterRender": "",
+        "content": "<table width=\"100%\" style=\"border:0\">\n  <tr>\n    <td style=\"border:0\">\n      <h3><a target=\"_blank\" style=\"color: white;\" href=\"{{link}}\">{{title}}</a></h3>\n      <div>{{{description}}}</div>\n    </td>\n    <td rowspan=\"2\" style=\"border:0\" width=\"200px\">\n      {{#if image}}\n      <div style=\"max-width: 100%; display: inline; height: auto;\"><img width=\"200px\" src=\"{{image}}\"></div>\n      {{/if}}\n    </td>\n  </tr>\n  <tr>\n    <td style=\"border:0\">\n      <b>{{date}} by {{author}}</b>\n    </td>\n  </tr>\n</table>",
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "language": "handlebars"
+        },
+        "editors": [],
+        "externalScripts": [],
+        "externalStyles": [],
+        "helpers": "",
+        "renderMode": "everyRow",
+        "styles": "",
+        "wrap": false
+      },
+      "pluginVersion": "4.5.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "volkovlabs-rss-datasource",
+            "uid": "${DS_RSS_USINE DIGITAL-VIEILLEINFORMATIQUE}"
+          },
+          "feedType": "items",
+          "refId": "A"
+        }
+      ],
+      "title": "Veille techno usine digitale",
+      "transformations": [
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "time",
+                "targetField": "pubDate"
+              }
+            ],
+            "fields": {}
+          }
+        }
+      ],
+      "type": "marcusolsson-dynamictext-panel"
+    },
+    {
+      "datasource": {
+        "type": "volkovlabs-rss-datasource",
+        "uid": "${DS_RSS_MEDIUM.COM/FEED/@VOLKOVLABS}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 14,
+        "w": 12,
+        "x": 0,
+        "y": 14
+      },
+      "id": 1,
+      "options": {
+        "afterRender": "",
+        "content": "<table width=\"100%\" style=\"border:0\">\n  <tr>\n    <td style=\"border:0\">\n      <h3><a target=\"_blank\" style=\"color: white;\" href=\"{{link}}\">{{title}}</a></h3>\n      {{{content:h4}}}\n    </td>\n    <td rowspan=\"2\" style=\"border:0\" width=\"200px\">\n      <div style=\"max-width: 100%; display: inline; height: auto;\"><img width=\"200px\" src=\"{{content:img-src}}\"></div>\n    </td>\n  </tr>\n  <tr>\n    <td style=\"border:0\">\n      <b>{{date pubDate 'MMM, DD YYYY'}} by {{dc:creator}}</b>\n    </td>\n  </tr>\n</table>",
+        "defaultContent": "The query didn't return any results.",
+        "editor": {
+          "format": "auto",
+          "language": "html"
+        },
+        "editors": [],
+        "externalScripts": [],
+        "externalStyles": [],
+        "helpers": "",
+        "renderMode": "everyRow",
+        "styles": "",
+        "wrap": true
+      },
+      "pluginVersion": "4.5.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "volkovlabs-rss-datasource",
+            "uid": "${DS_RSS_MEDIUM.COM/FEED/@VOLKOVLABS}"
+          },
+          "feedType": "items",
+          "refId": "A"
+        }
+      ],
+      "title": "medium.com-@volkovlabs",
+      "transformations": [
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "dateFormat": "ddd, DD MMM YYYY HH:mm:ss ZZ",
+                "destinationType": "time",
+                "targetField": "pubDate"
+              }
+            ],
+            "fields": {}
+          }
+        }
+      ],
+      "type": "marcusolsson-dynamictext-panel"
+    }
+  ],
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "RSS",
+  "uid": "cdiwfwb6mpk3kc",
+  "version": 6,
+  "weekStart": ""
+}
