@@ -21,7 +21,7 @@ You can find all collectors [here](https://github.com/prometheus-community/windo
 
 Here is a preview of the dashboard I use for my Windows Server.
 
-![alt text](src/img/preview.png)>
+![alt text](src/img/preview.png)
 
 
 *Don't judge me, I just stress my server to see beautiful graphs.*
