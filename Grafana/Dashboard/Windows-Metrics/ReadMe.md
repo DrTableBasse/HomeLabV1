@@ -15,7 +15,7 @@ msiexec /i windows_exporter-0.16.0-amd64.msi ENABLED_COLLECTORS="ad,adfs,cache,c
 ```
 
 Enable collector you want to use and specify the port you want to use.\
-You can find all collectors [here](https://github.com/prometheus-community/windows_exporter?tab=readme-ov-file#windows_exporter)
+You can find all service you can monitor [here](https://github.com/prometheus-community/windows_exporter?tab=readme-ov-file#windows_exporter)
 
 ## Preview 
 
