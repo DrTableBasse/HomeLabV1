@@ -1,4 +1,11 @@
-# HomeLab V1
+
+
+<h1 style="display: flex; align-items: center;">
+   HomeLab V1
+  <img src="src/img/Logo.png" width="50" alt="Logo" style="margin-left: 10px;"/>
+</h1>
+
+
 
 ## Description 
 

@@ -38,7 +38,7 @@ volumes:
 ``` 
 
 Now, create volume and network with the following commands:\
-*I pray the gods of Docker to forgive me for my sins*
+*I pray the gods of Docker to forgive me for my sins.*
 ```bash
 docker volume create influxdb-volume
 docker volume create grafana-volume
@@ -57,6 +57,10 @@ You will found every thing in Internet, but here is a [little help](https://docs
 So you just need go to your Proxmox GUI, then go to `Datacenter` > `Metric Server` > `Add` > `InfluxDB` and fill the form with your InfluxDB informations.
 
 ![alt text](src/img/Configuration.png)
+
+
+
+There is a [French video](https://www.youtube.com/watch?v=2bENL_l7y4c). You can just follow it and you will be able to connect Proxmox to InfluxDB.\
 
 
 ## Preview
