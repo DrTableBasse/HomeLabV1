@@ -54,3 +54,46 @@ Furthermore, I'll create an isolated network for my teams and me to improve our 
 There is a simple schema of my network with my different services
 
 <img  src="src\img\Network.png"/>
+
+
+# Hardware
+
+### Today 
+1) **Server**:
+    - **CPU**: i7-4770
+    - **RAM**: 32GB DDR3
+    - **Storage**: 1TB SSD
+    - **Network**: 1Gbps
+    - [**Reference**](https://www.topachat.com/pages/detail2_cat_est_ordinateurs_puis_rubrique_est_w_pc_puis_ref_est_in10087021.html)
+2) **Switch**: 
+    - **Model**: Zyxel GS1200-8
+    - **Ports**: 8
+    - **Network**: 1Gbps
+3) **Router**: 
+    - **Model**: [PfSense](https://www.pfsense.org/)
+
+
+### Future
+
+1) **Server**:\
+    *I'll buy two servers like this to do a cluster.*
+    - **Model**: GMK NucBox M5
+    - **CPU**: Ryzen 7 5700U
+    - **RAM**: 16 Go DDR4
+    - **Storage**: 512 Go SSD
+    - **Network**: 2x2.5 Gbps
+    - [**Reference**](https://www.powerplanetonline.com/fr/gmktec-nucbox-m5-ryzen-7-5700u-16go-512go-noir)
+
+2) **NAS**:
+    - **Model**: Synology DS923+
+    - **Storage**: 4x 16TB
+    - **Network**: 2x2.5 Gbps
+    - [**Reference**](https://www.synology.com/fr-fr/products/DS923+)
+
+3) **Switch**: 
+    - **Model**: Zyxel GS1200-8
+    - **Ports**: 8
+    - **Network**: 1Gbps
+
+4) **Router**:
+    - **Model**: [PfSense](https://www.pfsense.org/)
