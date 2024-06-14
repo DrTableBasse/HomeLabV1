@@ -1,0 +1,75 @@
+# Presentation
+
+By default, the GS1200-8 doesn't have snmp support on it. You should use an exporter which will scrap every informations of the switch.
+
+You have two ways to have informations about the switch : 
+
+
+- ip/link_data.js.
+- Use this [folder](https://github.com/robinelfrink/gs1200-exporter).
+
+## How to do this ?
+
+You just need to install `go` on your server.
+```bash
+sudo apt install go -y
+```
+The program can be configured by setting environment variables prior to running:
+
+| name              | required | description                            |
+|-------------------|----------|----------------------------------------|
+| `GS1200_ADDRESS`  | yes      | IP address of the GS1200-5/GS1200-8    |
+| `GS1200_PASSWORD` | yes      | Password to log on with                |
+| `GS1200_PORT`     | no       | Port number to listen on, default 9934 |
+
+Example:
+
+```shell
+$ go build
+$ export GS1200_ADDRESS=192.168.1.3
+$ export GS1200_PASSWORD=1234
+$ ./gs1200-exporter
+```
+
+Or just use the argument flags:
+
+```shell
+$ ./gs1200-exporter --help
+Usage of ./gs1200-exporter:
+  -address string
+        IP address or hostname of the GS1200 (default "192.168.1.3")
+  -password string
+        Password to log on to the GS1200 (default "********")
+  -port string
+        Port on which to expose metrics. (default "9934")
+```
+
+## Running with Docker
+
+```shell
+$ docker run \
+    --detach \
+    --name gs1200-exporter \
+    --rm \
+    --publish 9934:9934 \
+    --env GS1200_ADDRESS=192.168.1.3 \
+    --env GS1200_PASSWORD=1234 \
+    ghcr.io/robinelfrink/gs1200-exporter:latest
+```
+
+## Running with Docker Compose
+
+Example `docker-compose.yml`:
+
+```yaml
+version: '3'
+services:
+  gs1200-exporter:
+    container_name: gs1200-exporter
+    image: ghcr.io/robinelfrink/gs1200-exporter:latest
+    environment:
+      - GS1200_ADDRESS=192.168.1.3
+      - GS1200_PASSWORD=1234
+    ports:
+      - 9934:9934
+```
