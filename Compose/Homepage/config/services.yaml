@@ -1,0 +1,58 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/services
+
+- Infrastructure:
+    - Proxmox:
+        icon : proxmox
+        href: http://192.168.1.200:8006/
+        siteMonitor : "https://192.168.1.200:8006/#v1:0:18:4:::::::" #The link must looks like because you are already redirect on it. Homepage can't follow redirection.
+        description: Proxmox Hypervisor
+
+    - Pterodactyl :
+        icon : pterodactyl
+        href : https://samuel-lab.freeboxos.fr
+        siteMonitor : https://samuel-lab.freeboxos.fr
+        description : Web Orchestrator to manage Minecraft server and Discord bot and other stuff...
+        widget :
+            type: pterodactyl
+            url : https://samuel-lab.freeboxos.fr
+            key : API_KEY
+
+
+
+    - Grafana :
+        icon : grafana
+        href : http://samuel-lab.freeboxos.fr:3000
+        siteMonitor : http://samuel-lab.freeboxos.fr:3000
+        description : Cool Dashboard for all my network stuff
+
+    - Switch GS1200-8:
+
+       href : http://192.168.1.201
+       siteMonitor : http://192.168.1.201/
+       description: Samuel's Switch Room
+
+
+
+- Game Servers:
+    - Minecraft MineColonies:
+        widget:
+            type: minecraft
+            url: udp://samuel-lab.freeboxos.fr:25570
+
+- Docker Services:
+    - Prometheus :
+        icon : prometheus
+        href : http://samuel-lab.freeboxos.fr:9090
+        siteMonitor: http://samuel-lab.freeboxos.fr:9090
+
+    - Loki :
+        icon : loki
+        href : http://samuel-lab.freeboxos.fr:3100
+        siteMonitor: http://samuel-lab.freeboxos.fr:3100/metrics
+
+    - InfluxDB :
+        icon : influxdb
+        href : http://192.168.1.13:8086
+        siteMonitor: http://192.168.1.13:8086

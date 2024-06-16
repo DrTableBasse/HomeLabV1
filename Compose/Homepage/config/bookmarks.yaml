@@ -1,0 +1,23 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/latest/configs/bookmarks
+
+- Developer:
+    - Github:
+        - abbr: GH
+          href: https://github.com/DrTableBasse
+          icon : github
+
+- Social:
+    - Discord:  
+        - abbr: DS
+          href: https://discord.com/invite/zNrJqAkfvD
+          icon : discord
+
+- Entertainment:
+    - Twitch:
+        - abbr: TW
+          href: https://twitch.tv/dr_tablebasse
+          icon : twitch
+
+
