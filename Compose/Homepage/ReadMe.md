@@ -26,6 +26,5 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro # optional, for docker integrations
     restart: unless-stopped
 ```
-
 # Example of Homepage 
 <img  src="src\img\example.png"/>
