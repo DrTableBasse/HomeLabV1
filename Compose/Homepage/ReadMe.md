@@ -28,5 +28,4 @@ services:
 ```
 
 # Example of Homepage 
-
 <img  src="src\img\example.png"/>
