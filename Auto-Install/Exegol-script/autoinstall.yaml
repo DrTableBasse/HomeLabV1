@@ -1,0 +1,49 @@
+#cloud-config
+
+version: 1
+
+# On met à jour le système
+package_update: true
+package_upgrade: true
+
+# On créé l'utilisateur avec droits sudo en précisant sa clé SSH publique
+users:
+  - default
+  - name: user
+    groups: [ wheel, sudo ]
+    shell: /bin/bash
+    homedir: /home/user
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh_authorized_keys:
+      - collez ici le contenu de votre clé publique
+
+# On installe les applications nécessaires
+packages:
+  - curl
+  - git
+  - zip
+  - pipx
+
+runcmd:
+  # On installe Docker
+  - curl -fsSL "https://get.docker.com/" | sh
+  - usermod -aG docker user
+  - newgrp docker
+
+  # On installe pipx et Exegol
+  - apt update && apt install -y pipx
+  - pipx install exegol
+  - pipx ensurepath
+
+  # On ajoute un alias pour Exegol
+  - echo "alias exegol='sudo -E $(which exegol)'" >> /home/user/.bash_aliases
+  - source /home/user/.bashrc
+
+  # On ajoute un alias pour mettre à jour facilement le système
+  - echo "alias fup='sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y'" >> /home/user/.bashrc
+
+  # On coupe l'accès au compte root pour la connexion SSH
+  - sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin no/g' /etc/ssh/sshd_config
+  - systemctl restart sshd.service
+
+final_message: "Le système est configuré avec Exegol. Délai nécessaire : $UPTIME secondes"
