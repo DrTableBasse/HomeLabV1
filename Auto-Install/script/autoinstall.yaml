@@ -17,13 +17,8 @@ users:
 # On installe les applications nécessaires
 packages:
   - curl
-  - fio
   - git
   - htop
-  - ioping
-  - neofetch
-  - nload
-  - p7zip-full
   - docker.io
   - zip
 
