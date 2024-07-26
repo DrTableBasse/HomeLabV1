@@ -14,8 +14,7 @@ users:
     shell: /bin/bash
     homedir: /home/user
     sudo: ['ALL=(ALL) NOPASSWD:ALL']
-    ssh_authorized_keys:
-      - collez ici le contenu de votre clé publique
+    passwd: $6$VJlBtXsxsr31Bj/H$D1bFK7hENHKPYNN1G4CZmsEq.XSMN9nni79jl6cxvxFMgTnuXuRh9e8IYd1jrmJCGI8R71o9JaNuasqF7h3ue0  # Remplacez par votre mot de passe haché
 
 # On installe les applications nécessaires
 packages:
