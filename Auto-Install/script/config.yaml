@@ -1,0 +1,56 @@
+#cloud-config
+
+# On met à jour le système
+  package_update: true
+  package_upgrade: true
+
+# On créé l'utilisateur avec droits sudo en précisant sa clé SSH publique
+  users:
+    - default
+    - name: davlgd
+      groups: [ wheel , sudo ]
+      shell: /bin/bash
+      homedir: /home/davlgd
+      sudo: ['ALL=(ALL) NOPASSWD:ALL']
+      ssh_authorized_keys:
+        - collez ici le contenu de votre clé publique
+
+# On installe les applications nécessaires
+packages:
+  - blender
+  - curl 
+  - fio
+  - git
+  - htop
+  - ioping
+  - neofetch
+  - nload
+  - p7zip-full
+
+runcmd:
+
+  # On se place dans le dossier de l'utilisateur
+  - cd /home/davlgd
+
+  # On ajoute un alias pour mettre à jour facilement le système
+  - echo "alias fup='sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y'" >> .bashrc
+
+  # On coupe l'accès au compte root pour la connexion SSH
+  - sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin no/g' /etc/ssh/sshd_config
+  - systemctl restart sshd.service
+
+  # On télécharge les fichiers de travail
+  - wget http://ftp.nluug.nl/pub/graphics/blender/demo/movies/ToS/tearsofsteel_4k.mov
+  - wget https://download.blender.org/demo/test/BMW27_2.blend.zip
+  - wget https://download.blender.org/demo/test/benchmark.zip
+
+  # On décompresse les archives et on nettoie
+  - 7z x BMW27_2.blend.zip && rm BMW27_2.blend.zip
+  - 7z x benchmark.zip && rm benchmark.zip
+  - mv bmw27/*.blend . && rm -r bmw27
+  - mv benchmark/*.blend . && rm -r benchmark
+
+  # Les fichiers étant créés par le compte utilisateur, on change le propriétaire
+  - chown davlgd:davlgd *
+
+final_message: "Le système est configuré. Délai nécessaire : $UPTIME secondes"
