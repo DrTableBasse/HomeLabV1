@@ -1,5 +1,7 @@
 #cloud-config
 
+version: 1
+
 # On met à jour le système
 package_update: true
 package_upgrade: true
@@ -13,26 +15,25 @@ users:
     homedir: /home/user
     sudo: ['ALL=(ALL) NOPASSWD:ALL']
 
-
 # On installe les applications nécessaires
 packages:
   - curl
   - git
   - zip
+  - docker.io
 
 runcmd:
   # On se place dans le dossier de l'utilisateur
   - cd /home/user
 
   # On ajoute un alias pour mettre à jour facilement le système
-  - echo "alias fup='sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y'" >> .bashrc
+  - echo "alias fup='sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y'" >> /home/user/.bashrc
 
   # On coupe l'accès au compte root pour la connexion SSH
   - sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin no/g' /etc/ssh/sshd_config
   - systemctl restart sshd.service
 
-
-  # On ajoute l'utilisateur davlgd au groupe docker
+  # On ajoute l'utilisateur user au groupe docker
   - usermod -aG docker user
 
 final_message: "Le système est configuré. Délai nécessaire : $UPTIME secondes"
