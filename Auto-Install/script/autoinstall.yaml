@@ -1,19 +1,19 @@
 #cloud-config
 
 # On met à jour le système
-  package_update: true
-  package_upgrade: true
+package_update: true
+package_upgrade: true
 
 # On créé l'utilisateur avec droits sudo en précisant sa clé SSH publique
-  users:
-    - default
-    - name: davlgd
-      groups: [ wheel , sudo ]
-      shell: /bin/bash
-      homedir: /home/davlgd
-      sudo: ['ALL=(ALL) NOPASSWD:ALL']
-      ssh_authorized_keys:
-        - collez ici le contenu de votre clé publique
+users:
+  - default
+  - name: davlgd
+    groups: [ wheel , sudo ]
+    shell: /bin/bash
+    homedir: /home/davlgd
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh_authorized_keys:
+      - collez ici le contenu de votre clé publique
 
 # On installe les applications nécessaires
 packages:
