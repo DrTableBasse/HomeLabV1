@@ -1,65 +1,62 @@
 # Watchtower avec Docker Compose
 
-## Présentation de l'outil Watchtower
+## Introduction to Watchtower
 
-Watchtower est un outil qui permet de mettre à jour automatiquement les conteneurs Docker lorsqu'une nouvelle image est disponible. Cela est particulièrement utile pour maintenir vos services à jour sans intervention manuelle.
+Watchtower is a tool that automatically updates Docker containers when a new image is available. This is particularly useful for keeping your services up to date without manual intervention.
 
-## Avantages de Watchtower
+## Benefits of Watchtower
 
-- **Automatisation** : Met à jour automatiquement les conteneurs Docker.
-- **Sécurité** : Assure que les conteneurs utilisent les dernières versions des images, incluant les correctifs de sécurité.
-- **Simplicité** : Facile à configurer et à utiliser avec Docker Compose.
+- **Automation**: Automatically updates Docker containers.
+- **Security**: Ensures containers use the latest image versions, including security patches.
+- **Simplicity**: Easy to configure and use with Docker Compose.
 
-## Utilisation avec Docker Compose
+## Usage with Docker Compose
 
-Voici un exemple de fichier `docker-compose.yml` pour utiliser Watchtower :
+Here is an example `docker-compose.yml` file to use Watchtower:
 
 ```yaml
 services:
-  watchtower:
-    image: containrrr/watchtower:latest
-    container_name: watchtower
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=Europe/Paris
-      - WATCHTOWER_POLL_INTERVAL=604800
-      - WATCHTOWER_CLEANUP=true
-      - WATCHTOWER_INCLUDE_STOPPED=true
-      - WATCHTOWER_REVIVE_STOPPED=false
-      - WATCHTOWER_NOTIFICATIONS=shoutrrr
-      - WATCHTOWER_NOTIFICATION_URL=discord://token@idWebhook #envoyer des notification sur discord
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    network_mode: host
-    restart: unless-stopped
+    watchtower:
+        image: containrrr/watchtower:latest
+        container_name: watchtower
+        environment:
+            - PUID=1000
+            - PGID=1000
+            - TZ=Europe/Paris
+            - WATCHTOWER_POLL_INTERVAL=604800
+            - WATCHTOWER_CLEANUP=true
+            - WATCHTOWER_INCLUDE_STOPPED=true
+            - WATCHTOWER_REVIVE_STOPPED=false
+            - WATCHTOWER_NOTIFICATIONS=shoutrrr
+            - WATCHTOWER_NOTIFICATION_URL=discord://token@idWebhook #send notifications to discord
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+        network_mode: host
+        restart: unless-stopped
 ```
 
 ## Configuration
 
-- **WATCHTOWER_CLEANUP** : Supprime les anciennes images après la mise à jour.
-- **WATCHTOWER_POLL_INTERVAL** : Intervalle de temps (en secondes) entre les vérifications des mises à jour.
+- **WATCHTOWER_CLEANUP**: Removes old images after updating.
+- **WATCHTOWER_POLL_INTERVAL**: Time interval (in seconds) between update checks.
 
-## Démarrage
+## Starting
 
-Pour démarrer Watchtower avec Docker Compose, utilisez la commande suivante :
+To start Watchtower with Docker Compose, use the following command:
 
 ```sh
 docker-compose up -d
 ```
 
-Cela lancera Watchtower en arrière-plan et commencera à surveiller les mises à jour des conteneurs.
+This will launch Watchtower in the background and start monitoring container updates.
 
-
-
-
-## Exemple de notification sur Discord
+## Example of Discord Notification
 
 ![alt text](image.png)
 
-## Exemple de logs de Watchtower
+## Example of Watchtower Logs
 
-On sait ici que tout fonctionne comme il faut 😁
+This shows that everything is working correctly 😁
 
 ```sh
 watchtower  | time="2024-10-26T11:50:07+02:00" level=info msg="Watchtower 1.7.1"
@@ -79,4 +76,5 @@ watchtower  | time="2024-10-26T11:51:42+02:00" level=info msg="Stopping /sonarr 
 
 ## Next Step
 
-- Monitorer dans Grafana les logs et faire de jolies dashboard.
+- Monitor logs in Grafana and create beautiful dashboards.
+
