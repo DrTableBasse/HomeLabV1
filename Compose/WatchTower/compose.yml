@@ -1,0 +1,18 @@
+services:
+    watchtower:
+        image: containrrr/watchtower:latest
+        container_name: watchtower
+        environment:
+            - PUID=1000
+            - PGID=1000
+            - TZ=Europe/Paris
+            - WATCHTOWER_POLL_INTERVAL=604800
+            - WATCHTOWER_CLEANUP=true
+            - WATCHTOWER_INCLUDE_STOPPED=true
+            - WATCHTOWER_REVIVE_STOPPED=false
+            - WATCHTOWER_NOTIFICATIONS=shoutrrr
+            - WATCHTOWER_NOTIFICATION_URL=discord://token@idWebhook #send notifications to discord
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+        network_mode: host
+        restart: unless-stopped
