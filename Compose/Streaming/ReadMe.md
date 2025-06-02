@@ -6,6 +6,7 @@ This Docker Compose stack sets up a privacy-focused media downloading and manage
 
 ## 🧠 Table of Contents
 
+- [🗂️ Schema of the stack](#-schéma-du-stack)
 - [🛡️ VPN - Gluetun](#-vpn---gluetun)
 - [🧠 Flaresolverr](#-flaresolverr)
 - [🍿 Jellyseerr](#-jellyseerr)
@@ -17,6 +18,11 @@ This Docker Compose stack sets up a privacy-focused media downloading and manage
 - [🌐 Networks](#-networks)
 
 ---
+
+
+## 🗂️ Schema of the stack
+
+![alt text](src/img/Diagram.png)
 
 ## 🛡️ VPN - Gluetun
 
