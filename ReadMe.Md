@@ -1,99 +1,70 @@
 
+<p align="center">
+    <img src="src/img/Logo.png" width="80" alt="HomeLab Logo" />
+</p>
 
-<h1 style="display: flex; align-items: center;">
-   HomeLab V1
-  <img src="src/img/Logo.png" width="50" alt="Logo" style="margin-left: 10px;"/>
-</h1>
+<h1 align="center">HomeLab V1</h1>
 
+<p align="center">
+    <em>Welcome to my HomeLab journey! 🚀</em>
+</p>
 
+---
 
-## Description 
+## 📝 Description
 
-This is the first version of my home lab server. I'll push all dashboard and configuration files for every service I have.\
-It's just a lab, not for production. You must check every service I host and select which you want to have on your own HomeLab.
+This repository documents the first version of my home lab server. Here you'll find dashboards, configuration files, and guides for every service I run.
 
-## Which Hypervisor do I use? 
+> ⚠️ **Note:** This is a lab environment, not for production. Review each service before deploying to your own HomeLab.
 
-Today, I'm on [Proxmox](https://www.proxmox.com/en/) because it's cool, open source, simple, and doesn't need licenses if you don't need support.
+---
 
-## List of Services 
+## 🖥️ Hypervisor
 
-- [Pterodactyl](https://pterodactyl.io/)\
-*It's for host servers like Minecraft and Discord Bot.*
+I'm currently using [Proxmox](https://www.proxmox.com/en/) — open source, simple, and license-free unless you need support.
 
-- [Grafana](https://grafana.com/)\
-*It's cool to see metrics and logs on one panel.*\
-*If you want, you can see an example of the dashboards I have in this [folder](https://github.com/DrTableBasse/HomeLabV1/tree/master/Grafana/Dashboard).*
+---
 
-- [Jellyfin](https://jellyfin.org/)\
-*My Own Netflix platform.*
+## 🛠️ Services
 
-- [Active Directory + Windows 10-11](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview)\
-*Sometimes, I test GPO and tricks to hack Active Directory and obtain information. For this part, I recommend [GOAD Repository](https://github.com/Orange-Cyberdefense/GOAD).*
+| Service | Description |
+|---------|-------------|
+| [Pterodactyl](https://pterodactyl.io/) | Host game servers (Minecraft, Discord bots, etc.) |
+| [Grafana](https://grafana.com/) | Unified metrics & logs dashboard. See my dashboards [here](https://github.com/DrTableBasse/HomeLabV1/tree/master/Grafana/Dashboard). |
+| [Jellyfin](https://jellyfin.org/) | Personal Netflix-like media server. |
+| [Active Directory + Windows 10/11](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) | Test GPOs, AD hacks, and info gathering. Recommended: [GOAD Repository](https://github.com/Orange-Cyberdefense/GOAD). |
+| [Docker](https://www.docker.com/) | Containerization platform. [Intro video](https://www.youtube.com/watch?v=_dfLOzuIg2o). |
+| [LXC](https://linuxcontainers.org/) | Lightweight Linux containers, Docker alternative. |
+| [PfSense](https://www.pfsense.org/) | Virtualized router/firewall. |
+| [Cadvisor](https://github.com/google/cadvisor) | Container monitoring tool. |
 
-- [Docker](https://www.docker.com/)\
-*If you don't know what Docker is, take a look at [this video](https://www.youtube.com/watch?v=_dfLOzuIg2o).*
+---
 
-- [LXC](https://linuxcontainers.org/)\
-*Just an alternative to Docker. It can run containers too.*
+## 🚀 Future Plans
 
-- [PfSense](https://www.pfsense.org/)\
-*Just a simple router that can be virtualized.*
+- Automate deployments with **Terraform**, **Ansible**, **Packer**, and more.
+- Build an isolated network for pentesting and team skill improvement.
 
-- [Cadvisor](https://github.com/google/cadvisor)\
-*Monitor your containers.*
+---
 
-## Futur
-In the future, I would like to perform some automatizations with Terraform, Ansible, Packer, and other technologies for auto-deployment.\
-Furthermore, I'll create an isolated network for my teams and me to improve our pentest skills.
+## 🌐 Network Schema
 
+Below is a simple diagram of my network and services:
 
+<p align="center">
+    <img src="src/img/Network.png" alt="Network Schema" />
+</p>
 
-## Network Schema
+---
 
-There is a simple schema of my network with my different services
+## 🖥️ Hardware
 
-<img  src="src\img\Network.png"/>
+### GMKtec Mini PC Gaming M7
 
+- **CPU:** AMD Ryzen 7 Pro 6850H (8 cores / 16 threads, up to 4.70GHz)
+- **RAM:** 32GB DDR5
+- **Storage:** 1TB PCIe SSD
+- **Networking:** Dual 2.5G LAN ports
+- **Ports:** Dual USB4, HDMI 2.1, USB-C
 
-# Hardware
-
-### Today 
-1) **Server**:
-    - **CPU**: i7-4770
-    - **RAM**: 32GB DDR3
-    - **Storage**: 1TB SSD
-    - **Network**: 1Gbps
-    - [**Reference**](https://www.topachat.com/pages/detail2_cat_est_ordinateurs_puis_rubrique_est_w_pc_puis_ref_est_in10087021.html)
-2) **Switch**: 
-    - **Model**: Zyxel GS1200-8
-    - **Ports**: 8
-    - **Network**: 1Gbps
-3) **Router**: 
-    - **Model**: [PfSense](https://www.pfsense.org/)
-
-
-### Future
-
-1) **Server**:\
-    *I'll buy two servers like this to do a cluster.*
-    - **Model**: GMK NucBox M5
-    - **CPU**: Ryzen 7 5700U
-    - **RAM**: 16 Go DDR4
-    - **Storage**: 512 Go SSD
-    - **Network**: 2x2.5 Gbps
-    - [**Reference**](https://www.powerplanetonline.com/fr/gmktec-nucbox-m5-ryzen-7-5700u-16go-512go-noir)
-
-2) **NAS**:
-    - **Model**: Synology DS923+
-    - **Storage**: 4x 16TB
-    - **Network**: 2x2.5 Gbps
-    - [**Reference**](https://www.synology.com/fr-fr/products/DS923+)
-
-3) **Switch**: 
-    - **Model**: Zyxel GS1200-8
-    - **Ports**: 8
-    - **Network**: 1Gbps
-
-4) **Router**:
-    - **Model**: [PfSense](https://www.pfsense.org/)
+This compact and powerful mini PC serves as the backbone of my HomeLab, providing enough resources for virtualization, containerization, and network services.
