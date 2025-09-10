@@ -1,0 +1,3 @@
+# Fichier meta-data (requis par cloud-init mais peut être vide)
+instance-id: ubuntu-template
+local-hostname: ubuntu-template
