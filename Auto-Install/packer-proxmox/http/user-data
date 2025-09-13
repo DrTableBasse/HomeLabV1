@@ -1,0 +1,70 @@
+#cloud-config
+autoinstall:
+  version: 1
+
+  # === LOCALISATION ===
+  locale: en_US.UTF-8
+  keyboard:
+    layout: us
+  timezone: Europe/Paris
+
+  # === RÉSEAU (DHCP sur ens18) ===
+  network:
+    version: 2
+    ethernets:
+      ens18:
+        dhcp4: true
+        dhcp-identifier: mac
+
+  # === UTILISATEUR ===
+  identity:
+    hostname: ubuntu-template
+    username: ubuntu
+    # Mot de passe: ubuntu (crypté pour cloud-init)
+    password: '$6$rounds=4096$xyz$BxBxtPFHnEDiNm/YF7fY7gWvE7Ye6N0CwrO0hGiGfGHfOr0hGiGfGHfOr0hGiGfGHfOr0'
+
+  # === SSH ===
+  ssh:
+    install-server: true
+    allow-pw: true
+    disable_root: false
+
+  # === PACKAGES ===
+  packages:
+    - qemu-guest-agent
+    - cloud-init
+    - curl
+    - wget
+    - vim
+    - htop
+    - tree
+    - unzip
+    - software-properties-common
+    - apt-transport-https
+    - ca-certificates
+    - gnupg
+    - lsb-release
+
+  # === STOCKAGE ===
+  storage:
+    layout:
+      name: direct
+    swap:
+      size: 0
+
+  # === COMMANDES POST-INSTALLATION ===
+  late-commands:
+    # SSH configuration
+    - 'sed -i "s/^#*PasswordAuthentication.*/PasswordAuthentication yes/g" /target/etc/ssh/sshd_config'
+    - 'sed -i "s/^#*PermitRootLogin.*/PermitRootLogin yes/g" /target/etc/ssh/sshd_config'
+    
+    # Sudo configuration
+    - 'echo "ubuntu ALL=(ALL) NOPASSWD:ALL" > /target/etc/sudoers.d/ubuntu'
+    - 'chmod 440 /target/etc/sudoers.d/ubuntu'
+    
+    # Enable services
+    - 'curtin in-target --target=/target -- systemctl enable qemu-guest-agent'
+    - 'curtin in-target --target=/target -- systemctl enable cloud-init'
+    
+    # Nettoyage logs pour cloud-init (facultatif)
+    - 'curtin in-target --target=/target -- cloud-init clean --logs'
