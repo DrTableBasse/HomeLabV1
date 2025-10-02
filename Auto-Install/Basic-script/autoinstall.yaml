@@ -1,39 +1,121 @@
 #cloud-config
+autoinstall:
+  version: 1
 
-version: 1
+  locale: fr_FR.UTF-8
+  keyboard:
+    layout: fr
+  timezone: Europe/Paris
 
-# On met à jour le système
-package_update: true
-package_upgrade: true
+  network:
+    version: 2
+    ethernets:
+      enp0s3:
+        dhcp4: true
 
-# On créé l'utilisateur avec droits sudo en précisant sa clé SSH publique
-users:
-  - default
-  - name: user
-    groups: [ wheel, sudo ]
-    shell: /bin/bash
-    homedir: /home/user
-    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+  identity:
+    username: egidio #nom du user que l'on souhaite
+    hostname: linuxconfig
+    password: '$6$WZKXRHiq6/DPc03E$Nd3jHz7KsgMCT/mgXof4Oeh9.UEQgqQpLoJqrUVFAQeLLnFza7QHHKRQ8Fc/K2sGn4QkrM57Sd1QUuy3HjQ5t1' #hash du mdp 'toto' --> openssl passwd -6 toto
 
-# On installe les applications nécessaires
-packages:
-  - curl
-  - git
-  - zip
-  - docker.io
+  ssh:
+    install-server: true
+    allow-pw: true
+    authorized-keys: []
 
-runcmd:
-  # On se place dans le dossier de l'utilisateur
-  - cd /home/user
+  packages:
+    - git
+    - python3-pip
 
-  # On ajoute un alias pour mettre à jour facilement le système
-  - echo "alias fup='sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y'" >> /home/user/.bashrc
+  snaps:
+    - name: pycharm-community
+      channel: stable 
+      classic: true
 
-  # On coupe l'accès au compte root pour la connexion SSH
-  - sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin no/g' /etc/ssh/sshd_config
-  - systemctl restart sshd.service
+  storage:
+    config:
+      - id: disk-sda
+        type: disk
+        ptable: gpt
+        path: /dev/sda
+        wipe: superblock-recursive
 
-  # On ajoute l'utilisateur user au groupe docker
-  - usermod -aG docker user
+      # EFI System Partition
+      - id: efipart
+        type: partition
+        device: disk-sda
+        size: 512M
+        flag: boot
+        grub_device: true
 
-final_message: "Le système est configuré. Délai nécessaire : $UPTIME secondes"
+      - id: bootpart
+        type: partition
+        device: disk-sda
+        size: 1G
+
+      - id: pvpart
+        type: partition
+        device: disk-sda
+        size: -1
+
+      - id: vg0
+        type: lvm_volgroup
+        name: vg0
+        devices:
+          - pvpart
+
+      - id: root_lv
+        type: lvm_partition
+        name: root_lv
+        volgroup: vg0
+        size: 10G
+ 
+      - id: home_lv
+        type: lvm_partition
+        name: home_lv
+        volgroup: vg0
+        size: 5G
+
+      # Formats
+      - id: efipart_fs
+        type: format
+        volume: efipart
+        fstype: fat32
+
+      - id: bootpart_fs
+        type: format
+        volume: bootpart
+        fstype: ext4
+
+      - id: root_lv_fs
+        type: format
+        volume: root_lv
+        fstype: ext4
+
+      - id: home_lv_fs
+        type: format
+        volume: home_lv
+        fstype: ext4
+
+      # Mounts
+      - id: efipart-mount
+        type: mount
+        device: efipart_fs
+        path: /boot/efi
+
+      - id: bootpart-mount
+        type: mount
+        device: bootpart_fs
+        path: /boot
+
+      - id: root_lv_mount
+        type: mount
+        device: root_lv_fs
+        path: /
+
+      - id: home_lv_mount
+        type: mount
+        device: home_lv_fs
+        path: /home
+
+  shutdown: reboot
