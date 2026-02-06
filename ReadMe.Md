@@ -29,7 +29,7 @@ I'm currently using [Proxmox](https://www.proxmox.com/en/) — open source, simp
 
 | Service | Description |
 |---------|-------------|
-| [Pterodactyl](https://pterodactyl.io/) | Host game servers (Minecraft, Discord bots, etc.) |
+| [Pelican](https://pelican.dev) | Host game servers (Minecraft, Discord bots, etc.) |
 | [Grafana](https://grafana.com/) | Unified metrics & logs dashboard. See my dashboards [here](https://github.com/DrTableBasse/HomeLabV1/tree/master/Grafana/Dashboard). |
 | [Jellyfin](https://jellyfin.org/) | Personal Netflix-like media server. |
 | [Active Directory + Windows 10/11](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) | Test GPOs, AD hacks, and info gathering. Recommended: [GOAD Repository](https://github.com/Orange-Cyberdefense/GOAD). |
@@ -67,4 +67,12 @@ Below is a simple diagram of my network and services:
 - **Networking:** Dual 2.5G LAN ports
 - **Ports:** Dual USB4, HDMI 2.1, USB-C
 
-This compact and powerful mini PC serves as the backbone of my HomeLab, providing enough resources for virtualization, containerization, and network services.
+
+
+### GMKtec Gaming Mini PC K8 Plus
+
+- **CPU:** AMD Ryzen 7 8845HS (8 cores / 16 threads, up to 5.1GHz)
+- **RAM:** 64GB DDR5
+- **Storage:** 1TB SSD
+- **Networking:** Dual 2.5G NIC, WiFi 6E, Bluetooth 5.2
+- **Ports:** HDMI 2.1, USB4, USB3.2 Gen 2, USB2.0

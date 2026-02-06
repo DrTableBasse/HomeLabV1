@@ -34,10 +34,14 @@ image: qmcgaw/gluetun:v3.39.0 #Ill do some test with the last version later
 cap_add:
   - net_admin
 environment:
-  - VPN_SERVICE_PROVIDER=protonvpn
-  - OPENVPN_USER=+pmp+nr
-  - OPENVPN_PASSWORD=
-  - SERVER_COUNTRIES=Netherlands,Germany
+          - VPN_TYPE=wireguard
+          - VPN_SERVICE_PROVIDER=protonvpn
+          - WIREGUARD_PRIVATE_KEY= MyPrivateKey #You need to generate this key yourself, you can find guides online on how to do it
+          - VPN_PORT_FORWARDING=on
+          - VPN_PORT_FORWARDING_PROVIDER=protonvpn
+          - PORT_FORWARD_ONLY=on
+          - VPN_USER="your_protonvpn_username"
+          - VPN_PASSWORD="your_protonvpn_password"
 ports:
   - 8112:8112
   - 6881:6881
@@ -45,6 +49,19 @@ ports:
   - 8114:8114
 restart: unless-stopped
 ```
+
+To check if everything is working : 
+
+On host : 
+```bash
+curl ifconfig.me
+```
+
+Inside the container : 
+```bash
+docker exec -it gluetun_vpn curl ifconfig.me
+```
+
 
 **Purpose**:
 - Tunnels all traffic via ProtonVPN for anonymity.
