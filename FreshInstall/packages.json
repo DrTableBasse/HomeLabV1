@@ -1,0 +1,85 @@
+{
+  "categories": [
+    {
+      "name": "Développement",
+      "packages": [
+        { "id": "git",              "label": "Git" },
+        { "id": "vscode",           "label": "Visual Studio Code" },
+        { "id": "github-desktop",   "label": "GitHub Desktop" },
+        { "id": "jetbrainstoolbox", "label": "JetBrains Toolbox" },
+        { "id": "nodejs-lts",       "label": "Node.js LTS" },
+        { "id": "python",           "label": "Python" },
+        { "id": "postman",          "label": "Postman" },
+        { "id": "docker-desktop",   "label": "Docker Desktop" },
+        { "id": "notepadplusplus",  "label": "Notepad++" }
+      ]
+    },
+    {
+      "name": "Navigateurs",
+      "packages": [
+        { "id": "firefox",      "label": "Firefox" },
+        { "id": "googlechrome", "label": "Google Chrome" },
+        { "id": "brave",        "label": "Brave" }
+      ]
+    },
+    {
+      "name": "Infra & DevOps",
+      "packages": [
+        { "id": "terraform",      "label": "Terraform" },
+        { "id": "packer",         "label": "Packer" },
+        { "id": "kubernetes-cli", "label": "kubectl" },
+        { "id": "helm",           "label": "Helm" },
+        { "id": "vagrant",        "label": "Vagrant" },
+        { "id": "openlens",       "label": "OpenLens" },
+        { "id": "mremoteng",      "label": "mRemoteNG" },
+        { "id": "filezilla",      "label": "FileZilla" },
+        { "id": "putty",          "label": "PuTTY" }
+      ]
+    },
+    {
+      "name": "Pentest & Sécurité",
+      "packages": [
+        { "id": "wireshark",               "label": "Wireshark" },
+        { "id": "nmap",                    "label": "Nmap" },
+        { "id": "burp-suite-free-edition", "label": "Burp Suite Community" },
+        { "id": "ghidra",                  "label": "Ghidra" },
+        { "id": "x64dbg.portable",         "label": "x64dbg" },
+        { "id": "sysinternals",            "label": "Sysinternals Suite" },
+        { "id": "processhacker",           "label": "Process Hacker" },
+        { "id": "hashcat",                 "label": "Hashcat" },
+        { "id": "bitwarden",               "label": "Bitwarden" },
+        { "id": "keepassxc",               "label": "KeePassXC" },
+        { "id": "wireguard",               "label": "WireGuard" }
+      ]
+    },
+    {
+      "name": "Gaming & Divertissement",
+      "packages": [
+        { "id": "steam",             "label": "Steam" },
+        { "id": "epicgameslauncher", "label": "Epic Games Launcher" },
+        { "id": "discord",           "label": "Discord" },
+        { "id": "obs-studio",        "label": "OBS Studio" },
+        { "id": "parsec",            "label": "Parsec" },
+        { "id": "playnite",          "label": "Playnite" }
+      ]
+    },
+    {
+      "name": "Outils & Utilitaires",
+      "packages": [
+        { "id": "xpipe",            "label": "XPipe" },
+        { "id": "windows-terminal", "label": "Windows Terminal" },
+        { "id": "powershell-core",  "label": "PowerShell 7" },
+        { "id": "powertoys",        "label": "PowerToys" },
+        { "id": "7zip",             "label": "7-Zip" },
+        { "id": "everything",       "label": "Everything" },
+        { "id": "jq",               "label": "jq" },
+        { "id": "curl",             "label": "curl" },
+        { "id": "vlc",              "label": "VLC" },
+        { "id": "teamviewer",       "label": "TeamViewer" },
+        { "id": "anydesk",          "label": "AnyDesk" },
+        { "id": "winscp",           "label": "WinSCP" },
+        { "id": "microsoft365",     "label": "Microsoft 365" }
+      ]
+    }
+  ]
+}
